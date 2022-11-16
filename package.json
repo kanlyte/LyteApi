@@ -1,0 +1,24 @@
+{
+  "name": "lyteapi",
+  "version": "1.0.0",
+  "description": "This is an api for the lyte mobile and both web app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kanlyte/LyteApi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kanlyte/LyteApi/issues"
+  },
+  "homepage": "https://github.com/kanlyte/LyteApi#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
