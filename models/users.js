@@ -1,21 +1,24 @@
 const mongoose = require("mongoose");
 
 /**
- * super user
+ * SuperUser
+ *
  */
-const CategorySchema = mongoose.Schema({
-  username: {
+const ManagerSchema = mongoose.Schema({
+  name: {
     type: String,
   },
-  password: {
+  pin: {
     type: String,
   },
-  category_date: {
-    type: Date,
-    default: Date.now,
+  phone_number: {
+    type: String,
+  },
+  manager_type: {
+    type: String,
   },
 });
 
-const Category = new mongoose.model("Categories", CategorySchema);
+const Manager = new mongoose.model("Manager", ManagerSchema);
 
-module.exports = {};
+module.exports = { Manager };

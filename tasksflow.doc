@@ -1,0 +1,24 @@
+System Flow
+  => user visits application landing feed
+  => user searches for locations
+  => user views Different houses on the application
+  => user clicks on one for details
+  => user makes contacts with house owner, books the house or makes an inquiry
+  => adds a house/hotel/room to favourites**
+  => can become a landlord/manager
+      => logs in the manager tab
+      => signs up for manager account
+      => Access his/her dashboard
+      => adds a hotel/house/hostel etc
+      => edits the house/hotel/etc
+      => views details of hostel/house/hotel
+
+(**not yet confirmed functionality)
+
+------------------------------------------------------------------------------------------------
+================================================================================================
+
+System Flow Tasks
+    => register a manager
+    => sign in a manager
+    => access dashboard for the manager

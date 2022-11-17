@@ -1,0 +1,5 @@
+manager:
+  => name
+  => Phone number
+  => pin
+  => owner type [landlord,manager]
