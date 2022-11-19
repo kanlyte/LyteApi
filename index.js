@@ -14,6 +14,14 @@ app.use("/app/", require("./api/mobile"));
 
 /**
  *
+ * home
+ */
+app.get("/", (req, res) => {
+  res.send("What do you really want here?");
+});
+
+/**
+ *
  * database
  */
 conn();

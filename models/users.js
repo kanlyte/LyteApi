@@ -5,7 +5,10 @@ const mongoose = require("mongoose");
  *
  */
 const ManagerSchema = mongoose.Schema({
-  name: {
+  first_name: {
+    type: String,
+  },
+  last_name: {
     type: String,
   },
   pin: {
