@@ -10,7 +10,8 @@ const app = express();
  */
 app.use(cors());
 app.use(express.json());
-app.use("/app/", require("./api/mobile"));
+app.use("/auth", require("./api/auth"));
+app.use("/admin", require("./api/admin"));
 
 /**
  *

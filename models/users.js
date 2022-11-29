@@ -5,19 +5,13 @@ const mongoose = require("mongoose");
  *
  */
 const ManagerSchema = mongoose.Schema({
-  first_name: {
-    type: String,
-  },
-  last_name: {
+  manager_name: {
     type: String,
   },
   pin: {
     type: String,
   },
   phone_number: {
-    type: String,
-  },
-  manager_type: {
     type: String,
   },
 });
