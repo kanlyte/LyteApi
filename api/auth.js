@@ -50,16 +50,21 @@ router.post("/manager/login", async (req, res) => {
   }
 });
 
-router.get("/sms/send_code/:phone", (req, res) => {
+router.get("/sms/send_code/:phone", async (req, res) => {
   try {
-    const phone = req.params.phone;
+    const phone_check = await Manager.findOne({
+      phone_number: { $eq: req.params.phone },
+    });
+    if (phone_check) {
+      res.send({ reason: "Phone Number Used", status: false });
+    } else {
+      /**
+       *
+       * SMS code api request
+       */
 
-    /**
-     *
-     * SMS code api request
-     */
-
-    res.send({ result: "7845", status: true });
+      res.send({ result: "7845", status: true });
+    }
   } catch (error) {
     console.log(error);
     res.send({ status: false, reason: "ServerError" });

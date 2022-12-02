@@ -4,6 +4,23 @@ const { Location, Region } = require("../models/admin");
 
 /**
  *
+ * Admin login
+ */
+router.post("/login", async (req, res) => {
+  try {
+    if (req.body.username === "LyteAdmin" && req.body.password === "$admin") {
+      res.send({ result: manager_check, status: true });
+    } else {
+      res.send({ status: false, reason: "WrongDetails" });
+    }
+  } catch (error) {
+    console.log(error);
+    res.send({ status: false, reason: "ServerError" });
+  }
+});
+
+/**
+ *
  * registers a new region
  */
 router.post("/region/new", async (req, res) => {
