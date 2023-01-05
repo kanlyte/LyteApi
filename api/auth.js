@@ -13,12 +13,13 @@ router.post("/manager/new", async (req, res) => {
   if (phone_check) {
     res.send({ reason: "Phone Number Used", status: false });
   } else {
-    const manager = new Manager({
-      manager_name: req.body.manager_name,
-      phone_number: req.body.phone_number,
-      pin: req.body.pin,
-    });
     try {
+      const manager = new Manager({
+        manager_name: req.body.manager_name,
+        phone_number: req.body.phone_number,
+        pin: req.body.pin,
+      });
+
       const manager_saved = await manager.save();
       res.send({
         status: true,

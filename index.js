@@ -12,6 +12,9 @@ app.use(cors());
 app.use(express.json());
 app.use("/auth", require("./api/auth"));
 app.use("/admin", require("./api/admin"));
+app.use("/manager", require("./api/manager"));
+
+app.use(express.static("static"));
 
 /**
  *
