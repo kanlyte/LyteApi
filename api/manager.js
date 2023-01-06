@@ -19,6 +19,7 @@ router.post("/new-property", async (req, res) => {
       location: req.body.location,
       google_map_coordinates: req.body.google_map_coordinates,
       image_paths: req.body.image_paths,
+      manager: req.body.manager,
     });
 
     const property_saved = await property.save();
@@ -148,6 +149,82 @@ router.post("/new-property", async (req, res) => {
     } else {
       res.send({ status: false, reason: "ServerError" });
     }
+  } catch (error) {
+    console.log(error);
+    res.send({ status: false, reason: "ServerError", result: error });
+  }
+});
+
+router.get("/:manager_id/properties", async (req, res) => {
+  try {
+    const manager_properties = await Property.find({
+      manager: { $eq: req.params.manager_id },
+    });
+
+    let properties = [];
+    manager_properties.forEach(async (el) => {
+      if (el.property_type) {
+      }
+      switch (el.property_type) {
+        case "Apartments":
+          const apartment = await Apartments.findOne({ property_id: el._id });
+          if (apartment) {
+            properties = [...properties, { ...el, ...apartment }];
+          }
+          break;
+
+        case "Hotel":
+          const hotel = await Hotel.findOne({ property_id: el._id });
+          if (hotel) {
+            properties = [...properties, { ...el, ...hotel }];
+          }
+          break;
+
+        case "Hostel":
+          const hostel = await Hostel.findOne({
+            property_id: el._id,
+          });
+          if (hostel) {
+            properties = [...properties, { ...el, ...hostel }];
+          }
+          break;
+
+        case "Rental House":
+          const rental_house = await Rental_House.findOne({
+            property_id: el._id,
+          });
+          if (rental_house) {
+            properties = [...properties, { ...el, ...rental_house }];
+          }
+          break;
+
+        case "Guest House":
+          const guest_house = await Guest_House.findOne({
+            property_id: el._id,
+          });
+          if (guest_house) {
+            properties = [...properties, { ...el, ...guest_house }];
+          }
+          break;
+
+        case "Business/Office":
+          const business_house = await Business_House.findOne({
+            property_id: el._id,
+          });
+          if (business_house) {
+            properties = [...properties, { ...el, ...business_house }];
+          }
+
+          break;
+
+        default:
+          res.send({ status: false, reason: "ServerError" });
+
+          break;
+      }
+    });
+
+    res.send({ status: true, result: properties });
   } catch (error) {
     console.log(error);
     res.send({ status: false, reason: "ServerError", result: error });

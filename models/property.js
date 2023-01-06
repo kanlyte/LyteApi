@@ -11,6 +11,7 @@ const PropertySchema = mongoose.Schema({
   location: { type: String },
   google_map_coordinates: { type: String },
   image_paths: { type: String },
+  manager: { type: String },
 });
 const Property = new mongoose.model("Property", PropertySchema);
 
