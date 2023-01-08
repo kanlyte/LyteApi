@@ -174,14 +174,14 @@ router.get("/:manager_id/properties", async (req, res) => {
                 property_id: el._id,
               });
               if (apartment) {
-                properties = [...properties, { ...el._doc, ...apartment._doc }];
+                properties.push({ ...el._doc, ...apartment._doc });
               }
               break;
 
             case "Hotel":
               const hotel = await Hotel.findOne({ property_id: el._id });
               if (hotel) {
-                properties = [...properties, { ...el._doc, ...hotel._doc }];
+                properties.push({ ...el._doc, ...hotel._doc });
               }
               break;
 
@@ -190,7 +190,7 @@ router.get("/:manager_id/properties", async (req, res) => {
                 property_id: el._id,
               });
               if (hostel) {
-                properties = [...properties, { ...el._doc, ...hostel._doc }];
+                properties.push({ ...el._doc, ...hostel._doc });
               }
               break;
 
@@ -199,10 +199,7 @@ router.get("/:manager_id/properties", async (req, res) => {
                 property_id: el._id,
               });
               if (rental_house) {
-                properties = [
-                  ...properties,
-                  { ...el._doc, ...rental_house._doc },
-                ];
+                properties.push({ ...el._doc, ...rental_house._doc });
               }
               break;
 
@@ -211,10 +208,7 @@ router.get("/:manager_id/properties", async (req, res) => {
                 property_id: el._id,
               });
               if (guest_house) {
-                properties = [
-                  ...properties,
-                  { ...el._doc, ...guest_house._doc },
-                ];
+                properties.push({ ...el._doc, ...guest_house._doc });
               }
               break;
 
@@ -223,10 +217,7 @@ router.get("/:manager_id/properties", async (req, res) => {
                 property_id: el._id,
               });
               if (business_house) {
-                properties = [
-                  ...properties,
-                  { ...el._doc, ...business_house._doc },
-                ];
+                properties.push({ ...el._doc, ...business_house._doc });
               }
 
               break;
@@ -237,7 +228,7 @@ router.get("/:manager_id/properties", async (req, res) => {
               break;
           }
         }
-        if (manager_properties.indexOf(el) === manager_properties.length - 1) {
+        if (properties.length === manager_properties.length) {
           res.send({ status: true, result: properties });
         }
       });
